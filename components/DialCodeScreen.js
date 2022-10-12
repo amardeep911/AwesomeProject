@@ -29,8 +29,9 @@ const DialCodeScreen = () => {
           ctx.updateDial(item.dial_code);
         }}
       >
-        <View>
-          <Text>
+       
+        <View >         
+          <Text className="text-base text-gray-900 mt-2 font-bold">
             {item.name} <Text>({`${item.dial_code}`}) </Text>
           </Text>
         </View>
@@ -39,7 +40,9 @@ const DialCodeScreen = () => {
   }
   return (
     <SafeAreaView className="m-4">
-      <View className="bg-slate-200 p-2 w-full">
+      <Text className="text-4xl text-black text-left font-bold mt-10">Select a country</Text>
+      <View className="bg-slate-200 p-2 w-full mt-5">
+        
         <TextInput
           placeholder="Search"
           className="text-xl"
@@ -47,10 +50,12 @@ const DialCodeScreen = () => {
         />
       </View>
       <FlatList
+   
         data={mappedArray}
         renderItem={renderComponent}
         keyExtractor={(item) => item.code}
       />
+     
     </SafeAreaView>
   );
 };

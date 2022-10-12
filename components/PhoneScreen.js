@@ -18,18 +18,15 @@ const PhoneScreen = () => {
     const ctx = useContext(DialCodeContext);
   const navigation = useNavigation();
   return (
-    <SafeAreaView className="m-5">
-      <View className="mt-44">
-        <Text className="text-5xl text-left font-bold ">
-          What is your
-          {"\n"}
-          Phone number ?
+    <SafeAreaView className="m-2">
+      <View className="mt-20">
+        <Text className="text-5xl text-black text-left font-bold ">
+          What is your Phone number?
+          
         </Text>
         <Text className="font-bold text-base mt-7">
           Tap "Get Started" to get an SMS confirmation to
-          {"\n"}
           help you use TREKLERS.We would like your phone
-          {"\n"}
           number.
         </Text>
       </View>
@@ -58,7 +55,7 @@ const PhoneScreen = () => {
         </View>
       </View>
       {/*Button*/}
-      <View className="mt-16 w-full">
+      <View className="mt-8 w-full">
         <TouchableOpacity
           onPress={() => navigation.navigate("OtpScreen")}
           className="bg-slate-900 p-3 rounded-md border-0"

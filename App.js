@@ -16,8 +16,8 @@ const App: () => Node = () => {
     <NavigationContainer>
     <ContextProvider>
         <Stack.Navigator>
-          <Stack.Screen component={PhoneScreen} name="Home" />
-          <Stack.Screen component={OtpScreen} name="OtpScreen" />
+          <Stack.Screen component={PhoneScreen} name="Home" options={{headerShown: false}} />
+          <Stack.Screen component={OtpScreen} name="OtpScreen" options={{headerShown: false}} />
           <Stack.Screen
             component={DialCodeScreen}
             name="DialCodeScreen"
