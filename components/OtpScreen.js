@@ -20,6 +20,30 @@ function OtpScreen() {
   const codeHandler = (code) => {
     setOtp(code)
     console.log(otp)
+    fetch('https://apiv2.orbiting.in/api/auth/sms/verify', {
+      method: 'POST',
+      body: JSON.stringify({
+        phoneNumber: '918016313103',
+        otp: `${otp}`
+      }),
+      headers: {
+        'Content-Type':
+        'application/json'
+      },
+    }).then(res => res.json())
+      .then(
+        (data) => {
+          console.log(data.jwt)
+          if (data.jwt){
+            console.log('welcome')
+          }
+          else {
+            console.log('Did not match')
+          }
+        }
+        )
+      .catch(console.error)
+    
   }
   
   return (
@@ -38,7 +62,7 @@ function OtpScreen() {
         <View className=" h-28 ">
 
         <OTPInputView className="text-black" style={{width: '80%', height: 100, marginLeft: 25}}
-    pinCount={4}
+    pinCount={6}
     autoFocusOnLoad
     codeInputFieldStyle={styles.underlineStyleBase}
     codeInputHighlightStyle={styles.underlineStyleHighLighted}

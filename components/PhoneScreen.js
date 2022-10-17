@@ -20,9 +20,23 @@ const PhoneScreen = () => {
   const ctx = useContext(DialCodeContext);
   const navigation = useNavigation();
   var helper 
-  function pressHandler () {
+ function pressHandler () {
     ctx.updatePhoneNo(helper)
     navigation.navigate('OtpScreen')
+  console.log(ctx.dial+ctx.phoneNo)
+    fetch('https://apiv2.orbiting.in/api/auth/sms/callback',{
+      method: 'POST',
+      body: JSON.stringify({
+        phoneNumber: `${ctx.dial}`+`${ctx.phoneNo}`
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+    }).then(res => res.json())
+      .then(console.log)
+      .catch(console.error)
+
   }
   
   const handler = (e) => {
