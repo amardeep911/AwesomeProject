@@ -5,22 +5,34 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
+import { useState } from "react";
+import { useContext } from "react";
+import { DialCodeContext } from "../Store/context";
 import OTPInputView from '@bherila/react-native-otp-input'
-import * as Icons from "react-native-heroicons/outline";
+
 
 function OtpScreen() {
+  const ctx = useContext(DialCodeContext);
+  const [otp, setOtp] = useState('')
+
+  const codeHandler = (code) => {
+    setOtp(code)
+    console.log(otp)
+  }
+  
   return (
     <SafeAreaView>
-      <Icons.ChevronDownIcon size={20} color="#000000" />
+      
       <View className="mt-20 mx-2">
         <View>
           <Text className="text-5xl font-bold text-black ">
             Verify phone number
           </Text>
           <Text className="text-lg font-bold text-black mt-5">
-            Check your SMS messages. We've sent you the PIN at
-            <Text className="opacity-5 text-slate-400"> 19027361538</Text>
+            Check your SMS messages. We've sent you the PIN at 
+            <Text className="opacity-5 text-slate-400">{ctx.phoneNo}</Text>
           </Text>
         </View>
         <View className=" h-28 ">
@@ -30,9 +42,8 @@ function OtpScreen() {
     autoFocusOnLoad
     codeInputFieldStyle={styles.underlineStyleBase}
     codeInputHighlightStyle={styles.underlineStyleHighLighted}
-    onCodeFilled = {(code) => {
-        console.log(`Code is ${code}, you are good to go!`)
-    }} />
+    onCodeFilled = {codeHandler}
+     />
         </View>
 
         <Text className="text-lg font-bold text-black mt-2">
@@ -40,10 +51,11 @@ function OtpScreen() {
         </Text>
 
         <View className="mt-8 w-full">
-          <TouchableOpacity className="bg-slate-900 p-3 rounded-md border-0">
+          <TouchableOpacity className="bg-slate-900 p-3 rounded-md border-0" onPress={codeHandler} >
             <Text className="text-white text-xl text-center font-medium">
-              CONTINUE
+              press
             </Text>
+            
           </TouchableOpacity>
         </View>
       </View>

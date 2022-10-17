@@ -11,7 +11,7 @@ import Data from "../Data/dummy_data";
 import { DialCodeContext } from "../Store/context";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-console.log(Data);
+
 
 const DialCodeScreen = () => {
   let mappedArray = Data;

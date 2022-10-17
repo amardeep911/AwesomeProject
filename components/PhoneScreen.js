@@ -4,10 +4,12 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import * as Icons from "react-native-heroicons/outline";
 import React from "react";
 import DialCode from "../Data/dummy_data";
+import {useState} from 'react'
 console.log(DialCode);
 import { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -15,8 +17,23 @@ import { DialCodeContext } from "../Store/context";
 
 
 const PhoneScreen = () => {
-    const ctx = useContext(DialCodeContext);
+  const ctx = useContext(DialCodeContext);
   const navigation = useNavigation();
+  var helper 
+  function pressHandler () {
+    ctx.updatePhoneNo(helper)
+    navigation.navigate('OtpScreen')
+  }
+  
+  const handler = (e) => {
+    console.log(e)
+    helper = +e;
+  }
+  
+  
+    
+    
+  
   return (
     <SafeAreaView className="m-2">
       <View className="mt-20">
@@ -50,6 +67,8 @@ const PhoneScreen = () => {
               placeholder="Phone number"
               keyboardType="numeric"
               cursorColor="#000000"
+              onChangeText={(e)=> handler(e)}
+              
             />
           </View>
         </View>
@@ -57,10 +76,12 @@ const PhoneScreen = () => {
       {/*Button*/}
       <View className="mt-8 w-full">
         <TouchableOpacity
-          onPress={() => navigation.navigate("OtpScreen")}
+          onPress={pressHandler}
           className="bg-slate-900 p-3 rounded-md border-0"
         >
+          
           <Text className="text-white text-xl text-center">CONTINUE</Text>
+       
         </TouchableOpacity>
       </View>
     </SafeAreaView>
