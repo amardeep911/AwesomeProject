@@ -16,14 +16,14 @@ import OTPInputView from '@bherila/react-native-otp-input'
 function OtpScreen() {
   const ctx = useContext(DialCodeContext);
   const [otp, setOtp] = useState('')
-
+  console.log(`${ctx.dial}`+`${ctx.phoneNo}`)
   const codeHandler = (code) => {
     setOtp(code)
     console.log(otp)
     fetch('https://apiv2.orbiting.in/api/auth/sms/verify', {
       method: 'POST',
       body: JSON.stringify({
-        phoneNumber: '918016313103',
+        phoneNumber: `${ctx.dial}`+`${ctx.phoneNo}`,
         otp: `${otp}`
       }),
       headers: {
@@ -48,7 +48,7 @@ function OtpScreen() {
   
   return (
     <SafeAreaView>
-      
+       
       <View className="mt-20 mx-2">
         <View>
           <Text className="text-5xl font-bold text-black ">

@@ -17,7 +17,7 @@ function ContextProvider({ children }) {
     setPhoneNo(no)
    
   }
-  console.log(phoneNo)
+  
   const value = {
     dial: dial,
     updateDial: updateDial,

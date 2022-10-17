@@ -17,17 +17,20 @@ import { DialCodeContext } from "../Store/context";
 
 
 const PhoneScreen = () => {
+  const [pho, setPho] = useState('');
   const ctx = useContext(DialCodeContext);
   const navigation = useNavigation();
   var helper 
  function pressHandler () {
+    
     ctx.updatePhoneNo(helper)
+    
     navigation.navigate('OtpScreen')
-  console.log(ctx.dial+ctx.phoneNo)
+    console.log(ctx.dial+pho)
     fetch('https://apiv2.orbiting.in/api/auth/sms/callback',{
       method: 'POST',
       body: JSON.stringify({
-        phoneNumber: `${ctx.dial}`+`${ctx.phoneNo}`
+        phoneNumber: `${ctx.dial}`+`${pho}`
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -42,6 +45,7 @@ const PhoneScreen = () => {
   const handler = (e) => {
     console.log(e)
     helper = +e;
+    setPho(helper);
   }
   
   
