@@ -71,12 +71,11 @@ function Category() {
       </TouchableOpacity>
     );
   }
-  let w = span.length * 4;
+  let w = span.length * 1;
+  console.log(span);
   const classes =
-    `bg-slate-500` +
-    (w ? (w >= 12 ? ` w-full` : ` w-${w}/12`) : ` flex:1 w-0 `) +
-    ` h-2` +
-    ` transition-transform`;
+    `bg-slate-500` + (w ? (w >= 3 ? ` w-full` : ` w-${w}/3`) : ` w-0`) + ` h-2`;
+  console.log(classes);
   return (
     <SafeAreaView className="mt-4 mx-1">
       <View className="mt-6 text-centre">
@@ -97,7 +96,7 @@ function Category() {
           className="w-full h-f/5 p-3 flex-row flex-wrap"
         />
       </View>
-      <View style={{ flexDirection: "row", flex: 1 }}>
+      <View className="w-full">
         <View className={classes}></View>
       </View>
     </SafeAreaView>
