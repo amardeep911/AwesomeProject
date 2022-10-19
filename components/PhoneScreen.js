@@ -70,7 +70,7 @@ const PhoneScreen = () => {
         <Text className="text-slate-400 font-bold items-center text-sm">
           COUNTRY CODE
         </Text>
-        <View className="flex-row space-x-4 mt-2">
+        <View className="flex-row mt-2">
           <View className="border-slate-200 border-2 rounded-sm p-2">
             <TouchableOpacity onPress={()=>navigation.navigate("DialCodeScreen")} className="flex-row items-center">
               <Text className="font-bold mr-6 text-lg">+{ctx.dial}</Text>
